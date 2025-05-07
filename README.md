@@ -29,7 +29,7 @@
     # Convert the JWP (token) to a SecureString and Connect to the Graph API w/ associated scope via user managed identity
     Connect-MgGraph -AccessToken ($AccessToken.Token | ConvertTo-SecureString -AsPlainText -Force) -NoWelcome -ErrorAction Stop
     ```
-11. Make necessary Graph API calls via PowerShell and ensure you have the correct / corresponding modules installed </br>
+11. Make necessary Graph API calls via PowerShell and ensure you have the correct / corresponding modules installed in your Runtime Environment </br>
     https://learn.microsoft.com/en-us/graph/api/security-security-runhuntingquery?view=graph-rest-1.0&tabs=http
 
 12. Successful Runbook execution
