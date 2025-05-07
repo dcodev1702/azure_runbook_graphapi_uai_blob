@@ -13,6 +13,7 @@
 7. Create an Automation Account / Runbook with PowerShell 7.2 >=  </br>
    * Associate Azure Role: Automation Job Operator to the user managed identity
    * Associate Azure Role: Automation Runbook Operator to the user managed identity
+     
 9. Create a custom PowerShell Runtime Environment and install the Microsoft.Graph.Security module </br>
    ![BFB9D653-2680-4F1D-934F-CBDF2B6FDE78](https://github.com/user-attachments/assets/f03bc4e6-9f31-4e31-9a22-de0a619ef1ec)
 
@@ -30,3 +31,9 @@
     ```
 11. Make necessary Graph API calls via PowerShell and ensure you have the correct / corresponding modules installed </br>
     https://learn.microsoft.com/en-us/graph/api/security-security-runhuntingquery?view=graph-rest-1.0&tabs=http
+
+12. Successful Runbook execution
+    * Post a hunting query via Graph Security API call
+    * Convert the results to CSV and send that data as a file to ADLSv2 Blob storage
+    ![A1F1B76A-D419-4C05-BA0B-79315B39FECD_1_201_a](https://github.com/user-attachments/assets/74738b4d-552b-45b3-a72b-a398b3fc5f71)
+
