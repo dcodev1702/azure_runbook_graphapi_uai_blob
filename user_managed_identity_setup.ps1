@@ -34,7 +34,6 @@ $graphSPN = Get-MgServicePrincipal -Filter "AppId eq '00000003-0000-0000-c000-00
     New-MgServicePrincipalAppRoleAssignment -ServicePrincipalId $mii.PrincipalId -BodyParameter $bodyParam
   }
 
-
 Get-MgServicePrincipalAppRoleAssignment -ServicePrincipalId $mi.PrincipalId | Format-List PrincipalDisplayName, ResourceDisplayName, AppRoleId
 
 
