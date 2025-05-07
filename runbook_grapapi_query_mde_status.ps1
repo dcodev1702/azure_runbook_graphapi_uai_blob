@@ -91,18 +91,6 @@ catch {
 }
 # endregion
 
-# region Process and Save Output
-Write-Output "Processing Graph API response and converting to CSV."
-
-# --- Add inspection of the raw API response object ---
-Write-Output "--- Raw API Response Object Structure (before accessing .results) ---"
-$apiResponse | Format-List * | Out-String | Write-Output
-
-Write-Output "--- Raw API Response Object as JSON (before accessing .results) ---"
-$apiResponse | ConvertTo-Json -Depth 25 | Out-String | Write-Output
-Write-Output "--------------------------------------------------------------------"
-# ----------------------------------------------------
-
 # Convert the data to CSV format
 $csvData = $apiResponse.results | ConvertTo-Csv -NoTypeInformation
 
@@ -114,9 +102,7 @@ $csvData | Set-Content -Path $OutputFile -Encoding UTF8 -Force
 Write-Output "Uploading $OutputFile to Blob storage 'audsmigration/mdedevices/devices.txt'"
 
 # 2. Create a storage context for 'audsmigration' using that login
-$storageContext = New-AzStorageContext `
-    -StorageAccountName 'audsmigration' `
-    -UseConnectedAccount
+$storageContext = New-AzStorageContext -StorageAccountName 'audsmigration' -UseConnectedAccount
 
 # 3. Upload the local file as a blob named 'devices.txt'
 Set-AzStorageBlobContent `
