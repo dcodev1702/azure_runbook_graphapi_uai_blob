@@ -10,8 +10,8 @@
 6. Create an ADLSv2 storage account & blob container </br>
    * Associate Azure Role: Storage Blob Data Contributor to the user managed identity
 7. Create an Automation Account / Runbook with PowerShell 7.2 >=  </br>
-   * Associate Azure Role: Automation Job Operator
-   * Associate Azure Role: Automation Runbook Operator
+   * Associate Azure Role: Automation Job Operator to the user managed identity
+   * Associate Azure Role: Automation Runbook Operator to the user managed identity
 9. Install the Microsoft.Graph.Security PowerShell module </br>
 10. Right now the Microsoft.Graph.Authentication PowerShell module has to be installed in the Runbook bec only version 2.25.0 works w/ Connect-MgGraph
 11. Make necessary Graph API calls. Ensure you have the correct and corresponding modules installed </br>
