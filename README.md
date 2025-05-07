@@ -1,1 +1,14 @@
 # azure_runbook_graphapi_uai_blob
+
+1. Create user managed identity
+2. Assign Azure Roles to the identity
+   ![6B053984-4558-48AA-A045-D26817FE177E](https://github.com/user-attachments/assets/a00cdccc-930a-4a63-80eb-c7698ba7c042)
+
+4. Assign Microsoft Graph Scopes to the identity ("SecurityEvents.ReadWrite.All", "ThreatHunting.Read.All")
+   ![D8C83857-11AC-4B9D-B826-683C9AD1E05F](https://github.com/user-attachments/assets/40ced0ab-aca0-4856-8653-bb4c805f70f8)
+
+6. Create an ADLSv2 storage account & blob container </br>
+7. Create an Automation Account / Runbook with PowerShell 7.2 >=  </br>
+8. Install the Microsoft.Graph.Security PowerShell module </br>
+9. Right now the Microsoft.Graph.Authentication PowerShell module has to be installed in the Runbook bec only version 2.25.0 works w/ Connect-MgGraph
+10. Make necessary Graph API calls. Ensure you have the correct and corresponding modules installed
