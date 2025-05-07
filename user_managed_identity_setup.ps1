@@ -40,7 +40,7 @@ Get-MgServicePrincipalAppRoleAssignment -ServicePrincipalId $mi.PrincipalId | Fo
 # !!!!!    ATTENTION    !!!!!
 # If you ever need to remove Graph API role assignments
 <#
-Get-MgServicePrincipalAppRoleAssignment -ServicePrincipalId $mii.PrincipalId | select Id | ForEach-Object { 
-  Remove-MgServicePrincipalAppRoleAssignment -ServicePrincipalId $mii.PrincipalId -AppRoleAssignmentId $_.Id -ErrorAction Stop -Confirm:$false
+Get-MgServicePrincipalAppRoleAssignment -ServicePrincipalId $mi.PrincipalId | select Id | ForEach-Object { 
+  Remove-MgServicePrincipalAppRoleAssignment -ServicePrincipalId $mi.PrincipalId -AppRoleAssignmentId $_.Id -ErrorAction Stop -Confirm:$false
 }
 #>
