@@ -12,3 +12,4 @@
 8. Install the Microsoft.Graph.Security PowerShell module </br>
 9. Right now the Microsoft.Graph.Authentication PowerShell module has to be installed in the Runbook bec only version 2.25.0 works w/ Connect-MgGraph
 10. Make necessary Graph API calls. Ensure you have the correct and corresponding modules installed
+    https://learn.microsoft.com/en-us/graph/api/security-security-runhuntingquery?view=graph-rest-1.0&tabs=http
