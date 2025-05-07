@@ -5,7 +5,7 @@
 3. Assign Azure Roles to the identity
    ![6B053984-4558-48AA-A045-D26817FE177E](https://github.com/user-attachments/assets/a00cdccc-930a-4a63-80eb-c7698ba7c042)
 
-4. Assign Microsoft Graph Scopes to the identity ("SecurityEvents.ReadWrite.All", "ThreatHunting.Read.All")
+4. Assign Microsoft Graph Scopes to the identity ("SecurityEvents.Read.All", "ThreatHunting.Read.All")
    ![D8C83857-11AC-4B9D-B826-683C9AD1E05F](https://github.com/user-attachments/assets/40ced0ab-aca0-4856-8653-bb4c805f70f8)
 
 6. Create an ADLSv2 storage account & blob container </br>
