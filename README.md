@@ -22,7 +22,11 @@
     Install-Module -Name Microsoft.Graph.Authentication -RequiredVersion 2.25.0 -Scope CurrentUser -Force
     ```
     ```powershell
-    Connect-MgGraph -AccessToken $SecureAccessToken -NoWelcome -ErrorAction Stop
+    Connect-AzAccount -Identity -AccountId '394ffxxx-xxxx-44f6-xxxx-98db7e1xxxxx' -Environment AzureCloud -ErrorAction Stop
+    $AccessToken = Get-AzAccessToken -ResourceUrl "https://graph.microsoft.com"
+
+    # Convert the JWP (token) to a SecureString and Connect to the Graph API w/ associated scope via user managed identity
+    Connect-MgGraph -AccessToken ($AccessToken.Token | ConvertTo-SecureString -AsPlainText -Force) -NoWelcome -ErrorAction Stop
     ```
 11. Make necessary Graph API calls via PowerShell and ensure you have the correct / corresponding modules installed </br>
     https://learn.microsoft.com/en-us/graph/api/security-security-runhuntingquery?view=graph-rest-1.0&tabs=http
