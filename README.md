@@ -1,7 +1,8 @@
 # Azure Runbook | Graph API | User Managed Identity | ADLSv2 (blob)
 
 1. Create user managed identity
-2. Assign Azure Roles to the identity
+   * Refer and run: user_managed_identity_setup.ps1
+3. Assign Azure Roles to the identity
    ![6B053984-4558-48AA-A045-D26817FE177E](https://github.com/user-attachments/assets/a00cdccc-930a-4a63-80eb-c7698ba7c042)
 
 4. Assign Microsoft Graph Scopes to the identity ("SecurityEvents.ReadWrite.All", "ThreatHunting.Read.All")
