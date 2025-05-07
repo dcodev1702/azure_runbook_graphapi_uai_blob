@@ -1,9 +1,8 @@
 Write-Output "Azure Runbook using User Assigned Identity & Graph API!"
 
-#Import-Module PowerShellGet
-
 # The latest version of Microsoft.Graph.Authentication DOES NOT WORK for Runbooks.
 # You have to pin the module to version 2.25.0 and install it, THEN IT WORKS (Connect-MgGraph -AccessToken)
+# Be sure to install the Microsoft PowershellGet module
 # SOLUTION: https://learn.microsoft.com/en-us/answers/questions/2237145/invalid-jwt-access-token
 Install-Module -Name Microsoft.Graph.Authentication -RequiredVersion 2.25.0 -Scope CurrentUser -Force
 
