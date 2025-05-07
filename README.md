@@ -16,9 +16,13 @@
 9. Create a custom PowerShell Runtime Environment and install the Microsoft.Graph.Security module </br>
    ![BFB9D653-2680-4F1D-934F-CBDF2B6FDE78](https://github.com/user-attachments/assets/f03bc4e6-9f31-4e31-9a22-de0a619ef1ec)
 
-10. Right now [7 May 2025] the Microsoft.Graph.Authentication PowerShell module has to be installed in the Runbook bec only version [2.25.0](https://learn.microsoft.com/en-us/answers/questions/2237145/invalid-jwt-access-token) works w/ Connect-MgGraph </br>
+10. Right now [7 May 2025] the Microsoft.Graph.Authentication PowerShell module has to be installed in the Runbook bec only version [2.25.0](https://learn.microsoft.com/en-us/answers/questions/2237145/invalid-jwt-access-token) works w/ Connect-MgGraph. </br>
+    * Prevents 'ERROR: Invalid JWT Token' when trying to authenticate to the Graph API.
     ```powershell
     Install-Module -Name Microsoft.Graph.Authentication -RequiredVersion 2.25.0 -Scope CurrentUser -Force
+    ```
+    ```powershell
+    Connect-MgGraph -AccessToken $SecureAccessToken -NoWelcome -ErrorAction Stop
     ```
 11. Make necessary Graph API calls via PowerShell and ensure you have the correct / corresponding modules installed </br>
     https://learn.microsoft.com/en-us/graph/api/security-security-runhuntingquery?view=graph-rest-1.0&tabs=http
