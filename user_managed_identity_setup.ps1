@@ -25,13 +25,13 @@ $graphSPN = Get-MgServicePrincipal -Filter "AppId eq '00000003-0000-0000-c000-00
     $appRole = $graphSPN.AppRoles | Where-Object Value -eq $_ | Where-Object AllowedMemberTypes -contains "Application"
   
     $bodyParam = @{
-      PrincipalId = $mii.PrincipalId
+      PrincipalId = $mi.PrincipalId
       ResourceId  = $graphSPN.Id
       AppRoleId   = $appRole.Id
     }
 
     # Assign the Graph API Scope to the user managed identity
-    New-MgServicePrincipalAppRoleAssignment -ServicePrincipalId $mii.PrincipalId -BodyParameter $bodyParam
+    New-MgServicePrincipalAppRoleAssignment -ServicePrincipalId $mi.PrincipalId -BodyParameter $bodyParam
   }
 
 Get-MgServicePrincipalAppRoleAssignment -ServicePrincipalId $mi.PrincipalId | Format-List PrincipalDisplayName, ResourceDisplayName, AppRoleId
