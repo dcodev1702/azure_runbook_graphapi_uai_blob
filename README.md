@@ -33,7 +33,7 @@
     https://learn.microsoft.com/en-us/graph/api/security-security-runhuntingquery?view=graph-rest-1.0&tabs=http
 
 12. Successful Runbook execution
-    * Post a hunting query via Graph Security API call
+    * Write a KQL hunting query and POST via Graph Security API call
     * Convert the results to CSV and send that data as a file to ADLSv2 Blob storage
     ![A1F1B76A-D419-4C05-BA0B-79315B39FECD_1_201_a](https://github.com/user-attachments/assets/74738b4d-552b-45b3-a72b-a398b3fc5f71)
 
