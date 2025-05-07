@@ -37,3 +37,5 @@
     * Convert the results to CSV and send that data as a file to ADLSv2 Blob storage
     ![A1F1B76A-D419-4C05-BA0B-79315B39FECD_1_201_a](https://github.com/user-attachments/assets/74738b4d-552b-45b3-a72b-a398b3fc5f71)
 
+    ![AD32FFB7-5641-49A7-9DB6-A3EFEF363CBF](https://github.com/user-attachments/assets/7d13d4c0-f275-4fa3-b754-04b08062df1d)
+
