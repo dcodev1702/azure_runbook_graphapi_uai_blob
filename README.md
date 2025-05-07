@@ -12,7 +12,9 @@
 7. Create an Automation Account / Runbook with PowerShell 7.2 >=  </br>
    * Associate Azure Role: Automation Job Operator to the user managed identity
    * Associate Azure Role: Automation Runbook Operator to the user managed identity
-9. Install the Microsoft.Graph.Security PowerShell module </br>
+9. Create a custom PowerShell Runtime Environment and install the Microsoft.Graph.Security module </br>
+   ![BFB9D653-2680-4F1D-934F-CBDF2B6FDE78](https://github.com/user-attachments/assets/f03bc4e6-9f31-4e31-9a22-de0a619ef1ec)
+
 10. Right now the Microsoft.Graph.Authentication PowerShell module has to be installed in the Runbook bec only version 2.25.0 works w/ Connect-MgGraph
 11. Make necessary Graph API calls. Ensure you have the correct and corresponding modules installed </br>
     https://learn.microsoft.com/en-us/graph/api/security-security-runhuntingquery?view=graph-rest-1.0&tabs=http
