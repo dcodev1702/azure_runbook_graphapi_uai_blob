@@ -16,7 +16,7 @@
 9. Create a custom PowerShell Runtime Environment and install the Microsoft.Graph.Security module </br>
    ![BFB9D653-2680-4F1D-934F-CBDF2B6FDE78](https://github.com/user-attachments/assets/f03bc4e6-9f31-4e31-9a22-de0a619ef1ec)
 
-10. As of [7 May 2025] verion [2.25.0](https://learn.microsoft.com/en-us/answers/questions/2237145/invalid-jwt-access-token) of the Microsoft.Graph.Authentication PowerShell module has to be installed in the Runbook IOT successfully use Connect-MgGraph. </br>
+10. As of [7 May 2025] version [2.25.0](https://learn.microsoft.com/en-us/answers/questions/2237145/invalid-jwt-access-token) of the Microsoft.Graph.Authentication has to be installed in the Runbook IOT successfully use Connect-MgGraph. </br>
     * Prevents ERROR: 'Invalid JWT Token' when trying to authenticate to the Graph API.
     ```powershell
     Install-Module -Name Microsoft.Graph.Authentication -RequiredVersion 2.25.0 -Scope CurrentUser -Force
