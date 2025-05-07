@@ -12,7 +12,7 @@ $mi | Format-List *
 Write-Host "`nUser-Assigned Identity -> Principal ID: $($mi.PrincipalId)"
 
 # Assign the required roles to the User Managed Identity
-New-AzRoleAssignment -ObjectId $mi.PrincipalId -ResourceGroupName $RGName -RoleDefinitionName Reader
+New-AzRoleAssignment -ObjectId $mi.PrincipalId -ResourceGroupName $RGName -RoleDefinitionName 'Reader'
 New-AzRoleAssignment -ObjectId $mi.PrincipalId -ResourceGroupName $RGName -RoleDefinitionName 'Automation Job Operator'
 New-AzRoleAssignment -ObjectId $mi.PrincipalId -ResourceGroupName $RGName -RoleDefinitionName 'Automation Runbook Operator'
 
