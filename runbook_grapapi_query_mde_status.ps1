@@ -28,51 +28,10 @@ try {
 
     # Import the module(s) you plan on using with the GraphAPI
     Import-Module Microsoft.Graph.Security
-
-   # Connect-MgGraph -AccessToken ($AccessToken.Token | ConvertTo-SecureString -AsPlainText -Force) -NoWelcome -ErrorAction Stop
  
 } catch {
     Write-Error $_.Exception.Message -ErrorAction Stop
 }
-
-# Build 5 dummy records
-<#
-$dummyData = 1..5 | ForEach-Object {
-    $RandomId = -join ((48..57) + (65..90) | Get-Random -Count 10 | ForEach-Object {[char]$_})
-    [PSCustomObject]@{
-        DeviceName   = "CLAYWS00$RandomId"
-        MachineGroup = "EUROPE"
-        AVMode       = "Active/Normal"
-        OSPlatform   = "Windows"
-        LastSeen     = (Get-Date).AddMinutes(-($_ * 10)).ToString("o")
-    }
-}
-
-# Export to CSV (overwrites if it already exists)
-$dummyData | Export-Csv -Path $OutputFile -NoTypeInformation
-
-Write-Verbose "Created dummy CSV with 5 records at $OutputFile"
-
-# ————————————————————————————————
-# Upload devices.txt to blob storage
-# ————————————————————————————————
-Write-Verbose "Uploading $OutputFile to Blob storage 'audsmigration/mdedevices/devices.txt'"
-
-# 2. Create a storage context for 'audsmigration' using that login
-$storageContext = New-AzStorageContext `
-    -StorageAccountName 'audsmigration' `
-    -UseConnectedAccount
-
-# 3. Upload the local file as a blob named 'devices.txt'
-Set-AzStorageBlobContent `
-    -Context      $storageContext `
-    -Container    'mdedevices' `
-    -File         "C:\app\$OutputFile" `
-    -Blob         'devices.txt' `
-    -Force         # overwrite if it already exists
-
-Write-Output "Upload complete."
-#>
 
 #[string]$KqlQuery = "DeviceInfo | where TimeGenerated > ago(1d) | take 3"
 [string]$KqlQuery = "let AVDetails = DeviceTvmInfoGathering | extend avdata = parsejson(AdditionalFields) | extend AVMode = iif(tostring(avdata.AvMode)=='0','Active/Normal',iif(tostring(avdata.AvMode)=='1','Passive',iif(tostring(avdata.AvMode)=='3','SxS Passive',iif(tostring(avdata.AvMode)=='4','EDR Blocked','Unknown')))) | project DeviceId, DeviceName, AVMode; let DeviceDetails = DeviceInfo | extend ig = ingestion_time() | extend ScopeTag = tostring(parse_json(AdditionalFields).scopeTag) | summarize arg_max(Timestamp,*) by DeviceId | where MachineGroup=='EUROPE' | project DeviceId, MachineGroup, OSPlatform, ScopeTag, LastSeen=Timestamp; AVDetails | join kind=inner(DeviceDetails) on DeviceId | project DeviceName, MachineGroup, AVMode, OSPlatform, LastSeen"
@@ -109,11 +68,6 @@ try {
     $apiResponse = Invoke-MgGraphRequest -Method POST -Uri $GraphEndpointPath -Body $body -ErrorAction Stop
 
     Write-Verbose "Graph API call successful."
-
-    # Output the raw response structure for debugging if needed
-    # Write-Output "Raw Graph API Response Structure:"
-    # $apiResponse | Format-List
-
 }
 catch {
     Write-Error "Failed to call Graph Security API."
