@@ -1,4 +1,4 @@
-# azure_runbook_graphapi_uai_blob
+# Azure Runbook | Graph API | User Managed Identity | ADLSv2 (blob)
 
 1. Create user managed identity
 2. Assign Azure Roles to the identity
