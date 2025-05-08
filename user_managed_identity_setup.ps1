@@ -29,6 +29,12 @@ $storageAccount = New-AzStorageAccount -ResourceGroupName $RGName `
 # Disable Soft Delete (File Service)
 Update-AzStorageFileServiceProperty -ResourceGroupName $RGName -StorageAccountName $saName -EnableShareDeleteRetentionPolicy $false
 
+# Get context for current storage account
+$ctx = New-AzStorageContext -StorageAccountName $saName -UseConnectedAccount
+
+# Use the context of the current storage account to create the desired blob container
+$container = New-AzStorageContainer -Name $ctrName -Context $ctx
+
 # Assign the user managed identity the Storage Blob Data Contributor role scoped to the container.
 New-AzRoleAssignment -ObjectId $mi.PrincipalId -RoleDefinitionName "Storage Blob Data Contributor" -Scope $storageAccount.Id + "/blobServices/default/containers/${ctrName}"
 
