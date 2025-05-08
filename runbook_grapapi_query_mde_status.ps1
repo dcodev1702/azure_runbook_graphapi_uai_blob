@@ -45,7 +45,6 @@ $apiResponse       = $null
 Write-Output "Starting script to call Graph Security API using assumed user authentication."
 Write-Output "KQL Query: $($KqlQuery)"
 Write-Output "Output file: $($OutputFile)"
-Write-Output "Assuming existing Graph connection with SecurityEvents.ReadWrite.All scope."
 
 # region Prepare and Execute Graph API Call
 Write-Output "Preparing Graph API call to $($GraphEndpointPath)."
