@@ -3,7 +3,6 @@ $RGName   = 'SecOps'
 $miName   = 'uai-audsmigration'
 $location = 'eastus2'
 $saName   = 'audsmigration'
-$skuName  = 'Standard_LRS'
 $ctrName  = 'mdedevices'
 
 $mi = New-AzUserAssignedIdentity -ResourceGroupName $RGName -Name $miName -Location $location -ErrorAction Stop
@@ -18,7 +17,7 @@ Write-Host "`nUser-Assigned Identity -> Principal ID: $($mi.PrincipalId)"
 $storageAccount = New-AzStorageAccount -ResourceGroupName $RGName `
   -Name $saName `
   -Location $location `
-  -SkuName $skuName `
+  -SkuName Standard_LRS `
   -Kind StorageV2 `
   -EnableHierarchicalNamespace $true `
   -AllowSharedKeyAccess $false `
