@@ -43,6 +43,12 @@ New-AzRoleAssignment -ObjectId $mi.PrincipalId -ResourceGroupName $RGName -RoleD
 New-AzRoleAssignment -ObjectId $mi.PrincipalId -ResourceGroupName $RGName -RoleDefinitionName 'Automation Job Operator'
 New-AzRoleAssignment -ObjectId $mi.PrincipalId -ResourceGroupName $RGName -RoleDefinitionName 'Automation Runbook Operator'
 
+# Create the Automation Account 
+
+# Create runbook
+
+# Create a runtime environment and set it to a runbook
+
 # Get the App Id for the Microsoft Graph API
 $graphSPN = Get-MgServicePrincipal -Filter "AppId eq '00000003-0000-0000-c000-000000000000'"
 
