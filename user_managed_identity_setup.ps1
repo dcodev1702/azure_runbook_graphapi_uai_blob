@@ -2,6 +2,9 @@
 $RGName   = 'SecOps'
 $miName   = 'uai-audsmigration'
 $location = 'eastus2'
+$saName   = 'audsmigration'
+$skuName  = 'Standard_LRS'
+$ctrName  = 'mdedevices'
 
 $mi = New-AzUserAssignedIdentity -ResourceGroupName $RGName -Name $miName -Location $location -ErrorAction Stop
 
@@ -10,6 +13,25 @@ $mi | Format-List *
 
 # You can access properties like the PrincipalId and ClientId
 Write-Host "`nUser-Assigned Identity -> Principal ID: $($mi.PrincipalId)"
+
+# Create an ALDSv2 Storage Account
+$storageAccount = New-AzStorageAccount -ResourceGroupName $RGName `
+  -Name $saName `
+  -Location $location `
+  -SkuName $skuName `
+  -Kind StorageV2 `
+  -EnableHierarchicalNamespace $true `
+  -AllowSharedKeyAccess $false `
+  -EnableHttpsTrafficOnly $true `
+  -MinimumTlsVersion TLS1_2 `
+  -IdentityType UserAssigned `
+  -UserAssignedIdentityId $mi.Id
+
+# Disable Soft Delete (File Service)
+Update-AzStorageFileServiceProperty -ResourceGroupName $RGName -StorageAccountName $saName -EnableShareDeleteRetentionPolicy $false
+
+# Assign the user managed identity the Storage Blob Data Contributor role scoped to the container.
+New-AzRoleAssignment -ObjectId $mi.PrincipalId -RoleDefinitionName "Storage Blob Data Contributor" -Scope $storageAccount.Id + "/blobServices/default/containers/${ctrName}"
 
 # Assign the required roles to the User Managed Identity
 New-AzRoleAssignment -ObjectId $mi.PrincipalId -ResourceGroupName $RGName -RoleDefinitionName 'Reader'
