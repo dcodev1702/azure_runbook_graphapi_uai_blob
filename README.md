@@ -39,6 +39,6 @@
     * Results (JSON) of the Azure Runbook after a successful job
     ![image](https://github.com/user-attachments/assets/180ea771-baea-4afc-8b8d-aba7a6c4f6dc)
 
-    * Convert the results to CSV and send that data as a file to ADLSv2 Blob storage
+    * Convert the results from JSON to CSV and send that data as a file (devices.txt) to ADLSv2 Blob storage
     ![AD32FFB7-5641-49A7-9DB6-A3EFEF363CBF](https://github.com/user-attachments/assets/7d13d4c0-f275-4fa3-b754-04b08062df1d)
 
